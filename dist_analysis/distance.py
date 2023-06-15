@@ -78,3 +78,5 @@ def kendall_tau(blist):
 def new_distance(x, y):
     return x-y
 
+def change(y):
+    return y
