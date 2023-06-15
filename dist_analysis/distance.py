@@ -73,12 +73,3 @@ def kendall_tau(blist):
                 blist[i-1], blist[i] = blist[i], blist[i-1]
     
     return swapcount
-
-
-def new_distance(x, y):
-    return x-y
-
-## run anlayis
-
-model = DistanceSim(data, kendall_tau)
-print(model)
