@@ -78,3 +78,7 @@ def kendall_tau(blist):
 def new_distance(x, y):
     return x-y
 
+## run anlayis
+
+model = DistanceSim(data, kendall_tau)
+print(model)
