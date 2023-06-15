@@ -80,3 +80,6 @@ def new_distance(x, y):
 
 def change(y):
     return y
+
+def dist1(x):
+    return x
