@@ -56,7 +56,7 @@ class rcvElections:
 
  
 
-    def rcv_run(self,transfer_method =cincinnati_transfer, verbose_bool=False):
+    def rcv_run(self, transfer_method=cincinnati_transfer, verbose_bool=False):
         winners = []
         losers = []
         num_seats = self.num_seats
@@ -106,7 +106,6 @@ class rcvElections:
 
         # sort remaining candidates by vote totals
         candidates = sorted(candidates, key = lambda x: cand_totals[x])
-        candidates.reverse()
 
         # edge case where last remaining candidate is actually the winner
         if winners == candidates:
@@ -114,5 +113,5 @@ class rcvElections:
         # print("winners, losers, leftovers:")
         # print(winners, losers, candidates)
 
-        candidate_ranking = winners + candidates + losers
+        candidate_ranking = winners + candidates + list(reversed(losers))
         return candidate_ranking

@@ -45,11 +45,11 @@ class DistanceSim:
 
         self.results_df = dist_df
 
-    def find_min_sets(self, dist_df):
+    def find_min_sets(self):
         '''
         add doc string
         '''
-        return dist_df[dist_df['dist']==dist_df['dist'].min()]
+        return self.results_df[self.results_df['dist']==self.results_df['dist'].min()]
 
     def gen_3d_plot(self):
     
