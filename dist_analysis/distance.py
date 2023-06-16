@@ -42,8 +42,9 @@ class DistanceSim:
             dist = self.dist_func(borda_irv_rank)
 
             dist_df = pd.concat([pd.DataFrame({'a': a, 'b': b, 'c': c, 'dist': dist}, index=[0]), dist_df.loc[:]]).reset_index(drop=True)
-
+            
         self.results_df = dist_df
+        return dist_df
 
     def find_min_sets(self, dist_df):
         '''
@@ -55,8 +56,11 @@ class DistanceSim:
     
         fig = plt.figure(figsize = (10, 7))
         ax = plt.axes(projection ="3d")
+        ax.scatter3D(self.results_df['b'], self.results_df['c'], self.results_df['dist'])
+        ax.set_xlabel('b value')
+        ax.set_ylabel('c value')
         fig.show()
-        return ax.scatter3D(self.results_df['b'], self.results_df['c'], self.results_df['dist'])     
+        return ax     
 
 
 # Distance functions
@@ -75,11 +79,11 @@ def kendall_tau(blist):
     return swapcount
 
 
-def new_distance(x, y):
-    return x-y
+def rank_diff(blist):
 
-def change(y):
-    return y
+    sum_dist = 0
+    for index, value in enumerate(blist):
+        sum_dist += abs(value - (index + 1))
 
-def dist1(x):
-    return x
+    return sum_dist
+
